@@ -1,0 +1,49 @@
+camera:
+location coords: 0, 0, 96.773m
+Euler: 0, 0, 0
+Scale: 1.001, 1.003, 1.871
+
+
+Area Light:
+location coords: 40.834, 12.421, 28.151
+euler: 4.7744, 7.257, -57.548
+Scale: 1.087, 1.036, 1.00
+
+Background (screenshot)
+location coords: 0, 0, 0 
+euler: 0, 0, 0
+scale: 167.164, 118.122, 0.751
+Dimensons: 125, 118, 0
+
+Lid Obj:
+location coords: 0, 0, 96.773
+euler: 0, 0, 0 
+scale: 1.001, 1.003, 1.871
+max coords x & y: 52.684, 52.154, keep z as 1.4803
+
+
+NEW Coords:
+
+Lid object: 
+location coords: 1.529, -44.832, 0
+Euler: 90, 0, 0
+Scale: 1, 1, 1
+max X: 53.604m
+least X: -52.72m
+max Y: 2.8684m 
+least Y: -104m
+
+Sun:
+location coords: 0, 0, 78.2088
+Rotation: -4.06491, 2.95313, -3.82569
+Scale: 1, 0.116, 1
+
+camera:
+location coords: 0, 0, 96.773m
+Euler: 0, 0, 0
+Scale: 1.001, 1.003, 1.871
+
+background:
+location coords: 0, 0, 0 
+euler: 0, 0, 0
+scale: 93.446, 124.998, 93.446

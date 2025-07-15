@@ -1,0 +1,6 @@
+blenderproc
+numpy<2.0
+Pillow
+anomalib[full]
+ultralytics
+pyyaml 
