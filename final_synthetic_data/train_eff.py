@@ -11,7 +11,7 @@ datamodule = Folder(
     normal_dir="black_crops",
     abnormal_dir="bad",
     val_split_ratio=0.2,
-    train_batch_size=1,
+    train_batch_size=4,
     num_workers=8
 )
 
