@@ -14,7 +14,7 @@ def gen_rotation():
     return np.deg2rad(degree)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('scene', nargs='?', default="test/sambar.obj")
+parser.add_argument('scene', nargs='?', default="test5/test.obj")
 parser.add_argument('--runs', '-r', type=int, default=10)
 args = parser.parse_args()
 
@@ -22,7 +22,7 @@ args = parser.parse_args()
 bproc.init()
 bproc.camera.set_resolution(1920, 1080)
 bproc.python.camera.CameraUtility.set_intrinsics_from_blender_params(
-    lens=28.22, lens_unit="MILLIMETERS"
+    lens=29.22, lens_unit="MILLIMETERS"
 )
 
 # Load scene
@@ -34,7 +34,7 @@ bproc.camera.add_camera_pose(cam_pose)
 
 # Filter objects
 lid = bproc.filter.one_by_attr(objs, "name", "Lid")
-background = bproc.filter.one_by_attr(objs, "name", "backframe")
+background = bproc.filter.one_by_attr(objs, "name", "background")
 
 # Set object properties
 background.set_location([0, 0, 0])
@@ -44,7 +44,7 @@ background.set_scale([1, 1, 1])
 # ⬇️ PRIMARY FIX: Use a unique ID for the lid
 lid.set_cp("category_id", 1) 
 lid.set_cp("supercategory", "object")
-lid.set_scale([0.969196, 0.969196, 0.969196])
+lid.set_scale([1, 1, 1])
 
 for run_id in range(args.runs):
     # Set up light for this run
@@ -55,13 +55,15 @@ for run_id in range(args.runs):
     pt_light.set_location([3.03904, 27.7728, 79.871])
     pt_light.set_scale([-11.0794, -1.84018, -11.0794])
     pt_light.set_rotation_euler([np.deg2rad(-232.469), np.deg2rad(15.476), np.deg2rad(1.7676)])
-    lid.set_location([0, 0, 0])
+    lid.set_location(
+        np.random.uniform(
+            [-53.3257 * 0.8, -28.75 * 0.8, 0.09 * 0.8],
+            [53.3257 * 0.8, 28.7 * 0.8, 0.09 * 0.8]
+        ).tolist()
+    )
 
     # ⬇️ SECONDARY FIX: Adjust Z-location to prevent Z-fighting
-    lid.set_location(np.random.uniform(
-        [-54.5335 * 0.8, -22.7494 * 0.8, 0.1],
-        [51.411 * 0.8, 26.5257  * 0.8, 0.1]
-    ).tolist())
+    #
     lid.set_rotation_euler([np.deg2rad(90), 0, gen_rotation()])
 
     # Enable segmentation with the correct default ID
